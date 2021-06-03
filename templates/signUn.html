@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Sign-up</title>
+{% endblock %}
+
+{% block body %}
+<br>
+<div class="col-md-10 mx-auto col-lg-5">
+    <form class="p-4 p-md-5 border rounded-3 bg-light" method="post">
+        <h1 class="h3 mb-3 fw-normal">Please Sign-up</h1>
+        {% for msg in get_flashed_messages() %}
+            <div class="flash">{{msg}}</div>
+        {% endfor %}
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" name = "login" id="login" placeholder="name@example.com">
+            <label for="login">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" name = "password" id="password" placeholder="Password">
+            <label for="password">Password</label>
+        </div>
+         <div class="form-floating mb-3">
+            <input type="password" class="form-control" name = "password" id="password2" placeholder="Repeat password">
+            <label for="password">Repeat password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+        <hr class="my-4">
+        <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+    </form>
+</div>
+{% endblock %}

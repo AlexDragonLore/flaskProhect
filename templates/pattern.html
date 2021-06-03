@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Pattern</title>
+{% endblock %}
+
+{% block body %}
+<div class="accordion-item">
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            You entered as: {{ data }}
+        </div>
+    </div>
+</div>
+<br>
+<div class="container themed-container">
+    <h3 id="tooltips">Creating a Pattern</h3>
+    <p>To create your own template, you will need to enter the template name followed by the words keys separated by semicolons. It is <b>important</b> that the word order of the keys that the user enters matches the order in the document.</p>
+    <p>Example: Pattern name;Profile number;Last name;First Name</p>
+    <p>Example(rus): Название шаблона;Номер профиля;Фамилия;Имя</p>
+  {% for msg in get_flashed_messages() %}
+    <b><div class="flash">{{msg}}</div></b><br>
+        {% endfor %}
+    <form class="form-control" method="post">
+
+        <textarea type ="text" class="form-control" name="textForPattern" placeholder="Text for pattern" rows="3" ></textarea>
+        <br>
+    <input type="submit" value="sumbit" class="btn btn-primary">
+
+    </form>
+    <br>
+    <form class="form-control" method="post", action="deletePattern">
+        <br>
+        <select class="form-control" id="pattern" name="pattern">
+            {% for carcass in CARCASSES %}
+                <option value="{{ loop.index }}">{{ carcass }}</option>
+            {% endfor %}
+
+    </select>
+        <br>
+         <input type="submit" value="delete pattern" class="btn btn-primary">
+    </form>
+</div>
+{% endblock %}

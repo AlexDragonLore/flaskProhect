@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Sign-in</title>
+{% endblock %}
+
+{% block body %}
+{{ data }}
+{{ lins }}
+<br>
+<div class="col-md-10 mx-auto col-lg-5">
+
+  <form class="p-4 p-md-5 border rounded-3 bg-light" method="post">
+
+    <h1 class="h3 mb-3 fw-normal">Please Sign-in</h1>
+      {% for msg in get_flashed_messages() %}
+        <code class="highlighter-rouge">{{msg}}</code>
+      {% endfor %}
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="floatingInput" name="login" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Transformation</title>
+{% endblock %}
+
+{% block body %}
+<div class="accordion-item">
+    <div class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            You entered as: {{ data }}
+        </div>
+    </div>
+</div>
+<br>
+<form class="container themed-container" method="post" action="/" enctype="multipart/form-data">
+<div class="container themed-container">
+    <h5>Text from picture</h5>
+        <div class="form-group">
+            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Text from picture" rows="3">{{ text }}</textarea>
+        </div>
+    <br>
+    <p>Select pattern </p>
+
+    <select class="form-control" id="pattern" name="pattern">
+            {% for carcass in CARCASSES %}
+                <option value="{{ loop.index }}">{{ carcass }}</option>
+            {% endfor %}
+    </select>
+</div>
+
+    <br>
+    <h5>Image</h5>
+    <p>
+	<div>
+		<img src="{{ url_for('display_image', filename=filename) }}">
+	</div>
+
+    <div><br>
+        <label for="exampleFormControlFile1">File input</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="filePath" accept="image/jpeg,image/png,image/gif"><br>
+    </div><br>
+    <input type="submit" value="sumbit" class="btn btn-primary">
+</form>
+</div>
+
+{% endblock %}
